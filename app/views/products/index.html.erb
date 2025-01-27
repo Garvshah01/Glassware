@@ -1,8 +1,78 @@
-<h1>Products</h1>
-<div id="products">
-  <% @products.each do |product| %>
-    <div>
-      <%= product.name %>
+<% content_for :heading do %>
+  <h2>Products</h2>
+<% end %>
+
+<div class="container">
+   <!-- Search Bar -->
+  <div class="search-bar-container">
+    <div class="search-bar">
+      <%= text_field_tag :search, nil, placeholder: "Search products...", id: "searchInput", class: "form-control d-inline w-50" %>
+      <%= button_tag "Search", type: "button", onclick: "searchTable()", class: "btn btn-primary" %>
     </div>
-  <% end %>
+  </div>
+
+  <div class="table-container">
+    <table class="table align-middle mb-0">
+      <thead>
+        <tr>
+          <th>S No.</th>
+          <th>Product</th>
+          <th>SKU</th>
+          <th>Price</th>
+          <th>Stock</th>
+          <th>Category</th>
+          <th>Favorite</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each_with_index do |product, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= product.name %></td>
+          <td>UY108</td>
+          <td>₹ 100</td>
+          <td>145</td>
+          <td>Fitbit, Tracker</td>
+          <td><i class="bi bi-star"></i></td>
+          <td><%= link_to 'Edit', edit_product_path(product.id), class: 'btn btn-dark' %></td>
+        </tr>
+        <% end %>
+        <tr>
+          <td>2</td>
+          <td>
+            <img src="https://via.placeholder.com/50x50" alt="Pool Party Drink Holder">
+            Pool Party Drink Holder
+          </td>
+          <td>UY3757</td>
+          <td>$9.49</td>
+          <td>73</td>
+          <td>Men, Holder</td>
+          <td><i class="bi bi-star"></i></td>
+          <td><button>...</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination-container">
+    <nav>
+      <ul class="pagination">
+        <li class="page-item disabled"><a class="page-link" href="#">«</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">...</a></li>
+        <li class="page-item"><a class="page-link" href="#">6</a></li>
+        <li class="page-item"><a class="page-link" href="#">»</a></li>
+      </ul>
+    </nav>
+    <div class="page-info">
+      <span>PAGE</span>
+      <select>
+        <option selected>1</option>
+        <option>2</option>
+        <option>3</option>
+      </select>
+      <span>OF 102</span>
+    </div>
+  </div>
 </div>

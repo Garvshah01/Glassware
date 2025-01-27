@@ -74,5 +74,11 @@ Rails.application.configure do
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
 
+  # Do not eager load code on boot.
+  config.eager_load = false
+
+  # Do not precompile assets.
   config.assets.compile = true
+  config.assets.debug = true
+  config.assets.digest = false
 end

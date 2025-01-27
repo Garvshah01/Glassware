@@ -16,6 +16,7 @@
       <%= render :partial => 'shared/navigation', locals: { selected: :product } %>
     </div>
     <div class="content" id="content">
+      <%= yield :heading %>
       <%= yield %>
     </div>
   </body>
